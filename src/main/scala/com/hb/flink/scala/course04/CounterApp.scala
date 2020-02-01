@@ -4,9 +4,10 @@ import org.apache.flink.api.common.accumulators.LongCounter
 import org.apache.flink.api.common.functions.RichMapFunction
 import org.apache.flink.api.scala.ExecutionEnvironment
 import org.apache.flink.configuration.Configuration
+import org.apache.flink.core.fs.FileSystem.WriteMode
 
 /**
- * 计时器
+ * 计数器
  *
  * 基于Flink scala编程的计数器
  */
@@ -47,10 +48,10 @@ object CounterApp {
     })
 
     val filePath = "file:///Users/leon/Documents/items/test/counter-app"
-    info.writeAsText(filePath)
+    info.writeAsText(filePath,WriteMode.OVERWRITE)
     val jobResult = env.execute("CounterApp")
 
-    val num = jobResult.getAccumulatorResult("ele-counts-scala")
+    val num = jobResult.getAccumulatorResult[Long]("ele-counts-scala")
     println(num)
   }
 
