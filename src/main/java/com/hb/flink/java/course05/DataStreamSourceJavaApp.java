@@ -12,9 +12,18 @@ public class DataStreamSourceJavaApp {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        socketFunction(env);
+//        socketFunction(env); //从socket创建datastream
+        nonParallelSourceJavaFunction(env); //自定义数据源方式sourcefunction
 
         env.execute("DataStreamSourceJavaApp");
+    }
+
+    /*
+      自定义数据源方式sourcefunction
+     */
+    private static void nonParallelSourceJavaFunction(StreamExecutionEnvironment env) {
+        DataStreamSource<Long> data = env.addSource(new CustomNonParallelSourceJavaFunction());
+        data.print();
     }
 
     /**
