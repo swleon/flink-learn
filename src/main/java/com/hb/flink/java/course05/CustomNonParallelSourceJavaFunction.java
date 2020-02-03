@@ -4,7 +4,7 @@ import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
 /**
  * @ClassName CustomNonParallelSourceJavaFunction
- * @Description TODO
+ * @Description 其他方式见scala
  * @Author minglei.chen
  * @Date 2020/2/3 3:04 下午
  * @Version 1.0
