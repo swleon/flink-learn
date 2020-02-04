@@ -5,7 +5,7 @@ import org.apache.flink.api.scala.ExecutionEnvironment
 /**
  * scala 实现批处理程序
  */
-object BatchWCScalaApp {
+object aBatchWCScalaApp {
 
   def main(args: Array[String]): Unit = {
 
