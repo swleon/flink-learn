@@ -2,6 +2,7 @@ package com.hb.flink.java.course05;
 
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.collector.selector.OutputSelector;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SplitStream;
@@ -21,6 +22,9 @@ public class DataStreamTransformationJavaApp {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        //设置窗口时间类型，默认类型是ProcessingTime
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
 //        filterFunction(env);
 //        unionFUnction(env);
