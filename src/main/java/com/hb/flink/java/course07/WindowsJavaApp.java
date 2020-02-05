@@ -1,13 +1,12 @@
 package com.hb.flink.java.course07;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
-import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
-import scala.Tuple12;
+
 
 /**
  * @ClassName WindowsJavaApp
@@ -33,7 +32,8 @@ public class WindowsJavaApp {
                 }
             }
         }).keyBy(0)
-                .timeWindow(Time.seconds(5))
+//                .timeWindow(Time.seconds(5)) 滚动窗口
+                .timeWindow(Time.seconds(10),Time.seconds(5)) //滑动窗口，数据可能有重叠
                 .sum(1)
                 .print()
                 .setParallelism(1);

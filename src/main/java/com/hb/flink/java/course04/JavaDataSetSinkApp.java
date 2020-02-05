@@ -1,6 +1,5 @@
 package com.hb.flink.java.course04;
 
-import com.sun.tools.doclint.Env;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.core.fs.FileSystem;
